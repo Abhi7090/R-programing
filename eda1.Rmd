@@ -1,0 +1,688 @@
+---
+title: "EDA"
+author: "Abhishek Reddy--1NT20SDS01"
+date: "Aug 20,2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+## import dataset
+
+```{r}
+df = read.csv("D:/Abhi reddy/NMIT M.tech/covid_data_kerala.csv")
+View(df)
+
+head(df)
+
+nrow(df)
+
+ncol(df)
+
+head(df)
+
+head(df,6)
+
+tail(df)
+
+summary(df)
+
+sum(is.na(df))
+
+df[is.na(df)] = 0
+
+mean(df$Confirmed)
+
+mean(df$Recovered)
+
+mean(df$Deceased)
+
+var(df$Confirmed)
+
+var(df$Recovered)
+
+var(df$Deceased)
+
+cov(df$Confirmed,df$Recovered)
+
+cov(df$Confirmed,df$Deceased)
+
+cor(df$Confirmed,df$Recovered)
+
+cor(df$Confirmed,df$Deceased)
+
+
+sd(df$Confirmed)
+
+sd(df$Recovered)
+
+sd(df$Deceased)
+
+sd(df$Confirmed)/sqrt(df$Confirmed) 
+
+sd(df$Recovered)/sqrt(df$Recovered)
+
+sd(df$Deceased)/sqrt(df$Deceased)
+
+
+mad(df$Confirmed)
+
+mad(df$Recovered)
+
+mad(df$Deceased)
+
+
+median(df$Confirmed)
+
+median(df$Recovered)
+
+median(df$Deceased)
+
+min(df$Confirmed)
+
+min(df$Recovered)
+
+min(df$Deceased)
+
+max(df$Confirmed)
+
+max(df$Recovered)
+
+max(df$Deceased)
+
+
+range(max(df$Confirmed)-min(df$Confirmed))
+
+range(max(df$Recovered)-min(df$Recovered))
+
+range(max(df$Deceased)-min(df$Deceased))
+
+
+quantile(df$Confirmed,c(0.25, 0.5, 0.75))
+
+quantile(df$Recovered,c(0.25, 0.5, 0.75))
+
+quantile(df$Deceased,c(0.25, 0.5, 0.75))
+
+IQR(df$Confirmed)
+
+IQR(df$Recovered)
+
+IQR((df$Deceased))
+
+
+cor(df$Confirmed,df$Recovered, method = "pearson")
+
+cor(df$Confirmed,df$Deceased, method = "pearson")
+
+cor(df$Recovered,df$Deceased, method = "pearson")
+
+cor.test(df$Confirmed,df$Recovered, method = "pearson")
+
+cor.test(df$Confirmed,df$Deceased, method = "pearson")
+
+cor.test(df$Recovered,df$Deceased, method = "pearson")
+
+
+t.test(df$Confirmed,df$Recovered)
+
+t.test(df$Deceased,df$Recovered)
+
+t.test(df$Confirmed,df$Deceased)
+
+
+chisq.test(df$Confirmed,df$Recovered)
+
+chisq.test(df$Deceased,df$Recovered)
+
+chisq.test(df$Confirmed,df$Deceased)
+
+class(df$Confirmed)
+
+class(df$Recovered)
+
+class(df$Deceased)
+
+unclass(df$Confirmed)
+
+inherits(df$Confirmed,what = 'A',which=FALSE)
+
+oldClass(df$Confirmed)
+
+str(df$Confirmed)
+
+str(df$Recovered)
+
+str(df$Deceased)
+
+
+sum(df$Confirmed)
+
+sum(df$Recovered)
+
+sum(df$Deceased)
+
+diff(df$Confirmed)
+
+diff(df$Recovered)
+
+diff(df$Deceased)
+
+fivenum(df$Confirmed)
+
+fivenum(df$Recovered)
+
+fivenum(df$Deceased)
+
+table(df$Confirmed)
+
+table(df$Recovered)
+
+table(df$Deceased)
+
+scale(df$Confirmed,scale=T)
+
+scale(df$Recovered,scale=T)
+
+scale(df$Deceased,scale=T)
+
+length(df$Confirmed)
+
+length(df$Recovered)
+
+length(df$Deceased)
+
+rep(df$Confirmed)
+
+rep(df$Deceased)
+
+rep(df$Recovered)
+
+ls(df)
+
+dim(df)
+
+names(df)
+
+stem(df$Confirmed)
+
+stem(df$Recovered)
+
+stem(df$Deceased)
+
+pnorm(df$Confirmed)
+
+pnorm(df$Confirmed,mean=0,sd=1)
+
+pnorm(df$Recovered)
+
+pnorm(df$Deceased)
+
+qnorm(df$Confirmed)
+
+qnorm(df$Confirmed,mean=0,sd=1)
+
+qnorm(df$Recovered)
+
+rnorm(df$Confirmed)
+
+rnorm(df$Recovered)
+
+rnorm(df$Deceased)
+
+rnorm(df$Confirmed,mean=0,sd=1)
+
+rnorm(df$Recovered,mean=0,sd=1)
+
+rnorm(df$Deceased,mean=0,sd=1)
+
+dexp(df$Confirmed, rate = 1, log = FALSE)
+
+dexp(df$Recovered, rate = 1, log = FALSE)
+
+dexp(df$Deceased, rate = 1, log = FALSE)
+
+pexp(df$Confirmed, rate = 1, lower.tail = TRUE, log.p = FALSE)
+
+pexp(df$Recovered, rate = 1, lower.tail = TRUE, log.p = FALSE)
+
+pexp(df$Deceased, rate = 1, lower.tail = TRUE, log.p = FALSE)
+
+qexp(df$Confirmed, rate = 1, lower.tail = TRUE, log.p = FALSE)
+
+rexp(df$Confirmed)
+
+rexp(df$Recovered)
+
+rexp(df$Deceased)
+
+rexp(df$Confirmed,rate=2)
+
+rexp(df$Recovered,rate=2)
+
+rexp(df$Deceased,rate=2)
+
+dgamma(df$Confirmed, shape=1, rate = 1, log = FALSE)
+
+dgamma(df$Recovered, shape=1, rate = 1, log = FALSE)
+
+dgamma(df$Deceased, shape=1, rate = 1, log = FALSE)
+
+pgamma(df$Confirmed, shape=1, rate = 1, lower.tail = TRUE,log.p = FALSE)
+
+pgamma(df$Recovered, shape=1, rate = 1, lower.tail = TRUE,log.p = FALSE)
+
+pgamma(df$Deceased, shape=1, rate = 1, lower.tail = TRUE,log.p = FALSE)
+
+qgamma(df$Confirmed, shape=1, rate = 1, lower.tail = TRUE,log.p = FALSE)
+
+rgamma(df$Confirmed, shape=1, scale=1)
+
+rgamma(df$Recovered,shape=1,scale=1)
+
+rgamma(df$Deceased,shape=1,scale=1)
+
+dpois(df$Confirmed, lambda=1, log = FALSE)
+
+dpois(df$Recovered, lambda=1, log = FALSE)
+
+dpois(df$Deceased, lambda=1, log = FALSE)
+
+ppois(df$Confirmed, lambda=1, lower.tail = TRUE, log.p = FALSE)
+
+ppois(df$Recovered, lambda=1, lower.tail = TRUE, log.p = FALSE)
+
+ppois(df$Deceased, lambda=1, lower.tail = TRUE, log.p = FALSE)
+
+qpois(df$Recovered, lambda=1, lower.tail = TRUE, log.p = FALSE)
+
+rpois(df$Confirmed, lambda=1)
+
+rpois(df$Recovered,lambda=1)
+
+rpois(df$Deceased,lambda=1)
+
+dweibull(df$Confirmed, shape=1, scale = 1, log = FALSE)
+
+dweibull(df$Recovered, shape=1, scale = 1, log = FALSE)
+
+dweibull(df$Deceased, shape=1, scale = 1, log = FALSE)
+
+pweibull(df$Confirmed, shape=1, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+pweibull(df$Recovered, shape=1, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+pweibull(df$Deceased, shape=1, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+qweibull(df$Confirmed, shape=1, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+rweibull(df$Confirmed, shape=1, scale=1)
+
+rweibull(df$Recovered,shape=1,scale=1)
+
+rweibull(df$Deceased,shape=1,scale=1)
+
+dcauchy(df$Confirmed, location = 0, scale = 1, log = FALSE)
+
+dcauchy(df$Recovered, location = 0, scale = 1, log = FALSE)
+
+dcauchy(df$Deceased, location = 0, scale = 1, log = FALSE)
+
+pcauchy(df$Confirmed, location = 0, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+pcauchy(df$Recovered, location = 0, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+pcauchy(df$Deceased, location = 0, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+qcauchy(df$Confirmed, location = 0, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+rcauchy(df$Confirmed, location=1, scale=1)
+
+rcauchy(df$Recovered,location=1,scale=1)
+
+rcauchy(df$Deceased,location=1,scale=1)
+
+dbeta(df$Confirmed, shape1=1, shape2=2, ncp = 1, log = FALSE)
+
+dbeta(df$Recovered, shape1=1, shape2=2, ncp = 1, log = FALSE)
+
+dbeta(df$Deceased, shape1=1, shape2=2, ncp = 1, log = FALSE)
+
+pbeta(df$Confirmed, shape1=1, shape2=1, ncp = 1, lower.tail = TRUE, log.p = FALSE)
+pbeta(df$Recovered, shape1=1, shape2=1, ncp = 1, lower.tail = TRUE, log.p = FALSE)
+pbeta(df$Deceased, shape1=1, shape2=1, ncp = 1, lower.tail = TRUE, log.p = FALSE)
+qbeta(df$Confirmed, shape1=1, shape2=1, ncp = 1, lower.tail = TRUE, log.p = FALSE)
+rbeta(df$Confirmed, shape1=1, shape2=1)
+
+rbeta(df$Recovered,shape1 = 1,shape2 = 1)
+
+rbeta(df$Deceased,shape1 =1,shape2 = 1)
+
+dt(df$Confirmed, df=1, ncp=1, log = FALSE)
+
+dt(df$Recovered, df=1, ncp=1, log = FALSE)
+
+dt(df$Deceased, df=1, ncp=1, log = FALSE)
+
+pt(df$Confirmed, df=1, ncp=1, lower.tail = TRUE, log.p = FALSE)
+
+pt(df$Recovered, df=1, ncp=1, lower.tail = TRUE, log.p = FALSE)
+
+pt(df$Deceased, df=1, ncp=1, lower.tail = TRUE, log.p = FALSE)
+
+qt(df$Confirmed, df=1 ,ncp=1, lower.tail = TRUE, log.p = FALSE)
+
+rt(df$Confirmed, df=1, ncp=1)
+
+rt(df$Recovered, df=1, ncp=1)
+
+rt(df$Deceased, df=1, ncp=1)
+
+rt(df$Confirmed, df=1)
+
+rt(df$Recovered,df=1)
+
+rt(df$Deceased,df=1)
+
+df(df$Confirmed, df1=1, df2=1, ncp=1, log = FALSE)
+
+df(df$Recovered, df1=1, df2=1, ncp=1, log = FALSE)
+
+df(df$Deceased, df1=1, df2=1, ncp=1, log = FALSE)
+
+pf(df$Confirmed, df1=1, df2=1, ncp=1, lower.tail = TRUE, log.p = FALSE)
+
+pf(df$Recovered, df1=1, df2=1, ncp=1, lower.tail = TRUE, log.p = FALSE)
+
+pf(df$Deceased, df1=1, df2=1, ncp=1, lower.tail = TRUE, log.p = FALSE)
+
+qf(df$Confirmed, df1=1, df2=1, ncp=1, lower.tail = TRUE, log.p = FALSE)
+
+rf(df$Confirmed,df1=1,df2=1,ncp=1)
+
+rf(df$Confirmed, df1=1, df2=1)
+
+rf(df$Recovered,df1=1,df2 = 1)
+
+rf(df$Deceased,df1=1,df2=1)
+
+
+help("rchisq")
+dchisq(df$Confirmed, df=1, ncp = 1, log = FALSE)
+dchisq(df$Recovered, df=1, ncp = 1, log = FALSE)
+dchisq(df$Deceased, df=1, ncp = 1, log = FALSE)
+pchisq(df$Confirmed, df=1, ncp = 1, lower.tail = TRUE, log.p = FALSE)
+pchisq(df$Recovered, df=1, ncp = 1, lower.tail = TRUE, log.p = FALSE)
+pchisq(df$Deceased, df=1, ncp = 1, lower.tail = TRUE, log.p = FALSE)
+qchisq(df$Confirmed, df=1, ncp = 1, lower.tail = TRUE, log.p = FALSE)
+rchisq(df$Recovered, df=1, ncp = 1)
+rchisq(df$Confirmed, df=1)
+rchisq(df$Recovered,df=1)
+rchisq(df$Deceased,df=1)
+
+dbinom(df$Confirmed, size=1, prob=.25, log = FALSE)
+
+dbinom(df$Recovered, size=1, prob=.25, log = FALSE)
+
+dbinom(df$Deceased, size=1, prob=.25, log = FALSE)
+
+pbinom(df$Confirmed, size=1, prob=1, lower.tail = TRUE, log.p = FALSE)
+
+pbinom(df$Recovered, size=1, prob=1, lower.tail = TRUE, log.p = FALSE)
+
+pbinom(df$Deceased, size=1, prob=1, lower.tail = TRUE, log.p = FALSE)
+
+qbinom(df$Confirmed, size=1, prob=.25, lower.tail = TRUE, log.p = FALSE)
+
+rbinom(df$Confirmed, size=1, prob=0.25)
+
+rbinom(df$Recovered,size = 1,prob = 0.25)
+
+rbinom(df$Deceased,size = 1,prob=0.25)
+
+rmultinom(df$Confirmed, size=1, prob=0.25)
+
+rmultinom(df$Recovered,size = 1,prob = 0.25)
+
+rmultinom(df$Deceased,size = 1,prob=0.25)
+
+dgeom(df$Confirmed, prob=.25, log = FALSE)
+
+dgeom(df$Recovered, prob=.25, log = FALSE)
+
+dgeom(df$Deceased, prob=.25, log = FALSE)
+
+pgeom(df$Confirmed, prob=.25, lower.tail = TRUE, log.p = FALSE)
+
+pgeom(df$Recovered, prob=.25, lower.tail = TRUE, log.p = FALSE)
+
+pgeom(df$Deceased, prob=.25, lower.tail = TRUE, log.p = FALSE)
+
+qgeom(df$Confirmed, prob=.25, lower.tail = TRUE, log.p = FALSE)
+
+rgeom(df$Confirmed, prob=.5)
+
+rgeom(df$Recovered,prob = .5)
+
+rgeom(df$Deceased,prob = .5)
+
+dhyper(df$Confirmed, m=1, n=1, k=1, log = FALSE)
+
+dhyper(df$Recovered, m=1, n=1, k=1, log = FALSE)
+
+dhyper(df$Deceased, m=1, n=1, k=1, log = FALSE)
+
+phyper(df$Confirmed, m=1, n=1, k=1, lower.tail = TRUE, log.p = FALSE)
+
+phyper(df$Recovered, m=1, n=1, k=1, lower.tail = TRUE, log.p = FALSE)
+
+phyper(df$Deceased, m=1, n=1, k=1, lower.tail = TRUE, log.p = FALSE)
+
+qhyper(df$Confirmed, m=1, n=1, k=1, lower.tail = TRUE, log.p = FALSE)
+
+rhyper(df$Confirmed, m=1, n=1, k=1)
+
+rhyper(df$Recovered,m=1,n=1,k=1)
+
+rhyper(df$Deceased,m=1,n=1,k=1)
+
+dlogis(df$Confirmed, location = 1, scale = 1, log = FALSE)
+
+dlogis(df$Recovered, location = 1, scale = 1, log = FALSE)
+
+dlogis(df$Deceased, location = 1, scale = 1, log = FALSE)
+
+plogis(df$Confirmed, location = 1, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+plogis(df$Recovered, location = 1, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+plogis(df$Deceased, location = 1, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+qlogis(df$Deceased, location = 0, scale = 1, lower.tail = TRUE, log.p = FALSE)
+
+rlogis(df$Confirmed, location=0, scale=1)
+
+rlogis(df$Recovered,location = 0,scale=1)
+
+rlogis(df$Deceased,location = 0,scale=1)
+
+rlnorm(df$Confirmed, meanlog=0, sdlog=1)
+
+rlnorm(df$Recovered,meanlog = 0,sdlog = 1)
+
+rlnorm(df$Deceased,meanlog = 0,sdlog = 1)
+
+rlnorm(df$Confirmed,mean.Date(2020-08-31),sdlog = 1)
+
+dlnorm(df$Confirmed, meanlog = 1, sdlog = 1, log = FALSE)
+
+dlnorm(df$Confirmed, meanlog = 1, sdlog = 1, log = TRUE)
+
+dlnorm(df$Recovered, meanlog = 0, sdlog = 1, log = FALSE) 
+
+dlnorm(df$Deceased, meanlog = 0, sdlog = 1, log = FALSE)
+
+plnorm(df$Confirmed, meanlog = 0, sdlog = 1, lower.tail = TRUE, log.p = FALSE)
+
+plnorm(df$Recovered, meanlog = 0, sdlog = 1, lower.tail = TRUE, log.p = FALSE)
+
+plnorm(df$Deceased, meanlog = 0, sdlog = 1, lower.tail = TRUE, log.p = FALSE)
+
+qlnorm(df$Confirmed, meanlog = 0, sdlog = 1, lower.tail = TRUE, log.p = TRUE)
+
+qlnorm(df$Recovered, meanlog = 0, sdlog = 1, lower.tail = TRUE, log.p = FALSE)
+
+qlnorm(df$Deceased, meanlog = 0, sdlog = 1, lower.tail = TRUE, log.p = FALSE)
+
+rnbinom(df$Confirmed, size=1, prob=.5)
+
+rnbinom(df$Recovered,size = 1,prob = 0.5)
+
+rnbinom(df$Deceased,size = 1,prob = 0.5)
+
+rnbinom(df$Confirmed,size = 1,mu=1)
+
+rnbinom(df$Recovered,size = 1,mu=1)
+
+rnbinom(df$Deceased,size = 1,mu=1)
+
+runif(df$Confirmed, min=0, max=1)
+
+runif(df$Recovered, min=0, max=1)
+
+runif(df$Deceased, min=0, max=1)
+
+dunif(df$Confirmed, min = 0, max = 1, log = TRUE)
+
+dunif(df$Confirmed, min = 0, max = 1, log = FALSE)
+
+dunif(df$Recovered, min = 0, max = 1, log = FALSE)
+
+dunif(df$Deceased, min = 0, max = 1, log = FALSE)
+
+punif(df$Confirmed, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
+
+punif(df$Confirmed, min = 0, max = 1, lower.tail = FALSE, log.p = FALSE)
+
+punif(df$Recovered, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
+
+punif(df$Deceased, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
+
+qunif(df$Confirmed, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
+
+qunif(df$Recovered, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
+
+qunif(df$Deceased, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
+
+dwilcox(df$Confirmed, m=1, n=1, log = FALSE)
+
+dwilcox(df$Recovered, m=1, n=1, log = FALSE)
+
+dwilcox(df$Deceased, m=1, n=1, log = FALSE)
+
+pwilcox(df$Confirmed, m=1, n=1, lower.tail = TRUE, log.p = FALSE)
+
+pwilcox(df$Recovered, m=1, n=1, lower.tail = TRUE, log.p = FALSE)
+
+pwilcox(df$Deceased, m=1, n=1, lower.tail = TRUE, log.p = FALSE)
+
+qwilcox(df$Confirmed, m=1, n=1, lower.tail = TRUE, log.p = FALSE)
+
+rwilcox(df$Confirmed, m=1, n=1)
+
+rwilcox(df$Recovered, m=1, n=1)
+
+rwilcox(df$Deceased, m=1, n=1)
+
+dsignrank(df$Confirmed, n=1, log = FALSE)
+
+dsignrank(df$Recovered, n=1, log = FALSE)
+
+dsignrank(df$Deceased, n=1, log = FALSE)
+
+psignrank(df$Confirmed, n=1, lower.tail = TRUE, log.p = FALSE)
+
+psignrank(df$Recovered, n=1, lower.tail = TRUE, log.p = FALSE)
+
+psignrank(df$Deceased, n=1, lower.tail = TRUE, log.p = FALSE)
+
+qsignrank(df$Confirmed, n=1, lower.tail = TRUE, log.p = FALSE)
+
+rsignrank(df$Confirmed, n=1)
+
+rsignrank(df$Recovered, n=1)
+
+rsignrank(df$Deceased, n=1)
+
+boxplot(df$Confirmed,
+        main = "Covid-19 Cases in Kerala",
+        xlab = "Boxplot",
+        ylab = "Confirmed cases",
+        col = "orange",
+        border = "brown",
+        horizontal = TRUE,
+        notch = TRUE)
+boxplot(df$Recovered,
+        main = "Covid-19 Cases in Kerala",
+        xlab = "Boxplot",
+        ylab = "Recovered cases",
+        col = "Blue",
+        border = "brown",
+        horizontal = TRUE,
+        notch = TRUE)
+boxplot(df$Deceased,
+        main = "Covid-19 Cases in Kerala",
+        xlab = "Boxplot",
+        ylab = "Deceased cases",
+        col = "black",
+        border = "brown",
+        horizontal = TRUE,
+        notch = TRUE)
+hist(df$Confirmed)
+hist(df$Recovered)
+hist(df$Deceased)
+plot(density(df$Confirmed))
+plot(density(df$Recovered))
+plot(density(df$Deceased))
+boxplot(df$Confirmed,df$Recovered)
+boxplot(df$Confirmed,df$Deceased)
+boxplot(df$Deceased,df$Recovered)
+boxplot(df$Deceased,df$Confirmed)
+boxplot(df$Recovered,df$Confirmed)
+boxplot(df$Recovered,df$Deceased)
+plot(df$Confirmed,df$Recovered,pch=25)
+plot(df$Recovered,df$Confirmed,pch=25)
+plot(df$Confirmed,df$Deceased,pch=25)
+plot(df$Recovered,df$Deceased,pch=25)
+plot(df$Deceased,df$Confirmed,pch=25)
+plot(df$Deceased,df$Recovered,pch=25)
+plot(df$Confirmed,type='l')
+plot(df$Recovered,type='l')
+plot(df$Deceased,type='l')
+pie(df$Confirmed)
+pie(df$Recovered)
+pie(df$Deceased)
+dotchart(df$Confirmed)
+dotchart(df$Recovered)
+dotchart(df$Deceased)
+barplot(df$Confirmed)
+barplot(df$Recovered)
+barplot(df$Deceased)
+plot(df)
+smoothScatter(df$Confirmed)
+smoothScatter(df$Recovered)
+smoothScatter(df$Deceased)
+sunflowerplot(df$Confirmed)
+sunflowerplot(df$Recovered)
+sunflowerplot(df$Deceased)
+stripchart(df$Confirmed)
+stripchart(df$Recovered)
+stripchart(df$Deceased)  
+mosaicplot(df$Confirmed)
+mosaicplot(df$Recovered)
+mosaicplot(df$Deceased)
+
+
+
+
+
+```
